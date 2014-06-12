@@ -7,6 +7,16 @@ import java.util.concurrent.SynchronousQueue;
  * call to put() will block until there is a corresponding thread to take() that
  * element.
  *
+ * SynchronousQueue blocks until another thread is ready to take the element, one thread is trying to put.
+ * SynchronousQueue has zero capacity.
+ * SynchronousQueue is used to implement queuing strategy of  direct hand-off, where thread hands-off to waiting thread, else creates new one if allowed, else task rejected.
+ * This queue does not permit null elements, adding null elements will result in NullPointerException.
+ * For purposes of other Collection methods (for example contains), a SynchronousQueue acts as an empty collection.
+ * You cannot peek at a synchronous queue because an element is only present when you try to remove it;
+ *      Similarly you cannot insert an element (using any method) unless another thread is trying to remove it.
+ * You cannot iterate over SynchronousQueue as there is nothing to iterate.
+ * A SynchronousQueue constructed with fairness policy set to true grants threads access in FIFO order.
+ *
  * @author Javin Paul
  */
 public class SynchronousQueueDemo {
