@@ -13,7 +13,11 @@ public class SynchronousQueueDemo {
 
     public static void main(String args[]) {
 
-        final SynchronousQueue<String> queue = new SynchronousQueue<>();
+        final SynchronousQueue<String> queue = new SynchronousQueue<>(true);
+// If you have send the output carefully then you would have noticed that order of events are reversed.
+// Seems[CONSUMER] thread is consuming data even before[ PRODUCER]thread has produced it.
+// This happens because by default SynchronousQueue doesn’t guarantee any order, but it has a fairness policy, which if set to true allows access to threads in FIFO order.
+// You can enable this fairness policy by passing true to overloaded constructor of SynchronousQueue i.e.new SynchronousQueue( boolean fair).
 
         Thread producer = new Thread("PRODUCER") {
             public void run() {
