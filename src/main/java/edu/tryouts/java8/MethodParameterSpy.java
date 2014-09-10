@@ -1,4 +1,4 @@
-package edu.tryouts.devoxx.java8;
+package edu.tryouts.java8;
 /*
  * Copyright (c) 2013, Oracle and/or its affiliates. All rights reserved.
  *

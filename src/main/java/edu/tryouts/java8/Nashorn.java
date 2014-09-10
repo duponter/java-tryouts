@@ -1,4 +1,4 @@
-package edu.tryouts.devoxx.java8;
+package edu.tryouts.java8;
 
 import javax.script.Invocable;
 import javax.script.ScriptEngine;

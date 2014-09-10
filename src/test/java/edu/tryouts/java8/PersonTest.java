@@ -1,4 +1,4 @@
-package edu.tryouts.devoxx.java8;
+package edu.tryouts.java8;
 
 import org.junit.Test;
 
