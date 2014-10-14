@@ -96,14 +96,26 @@ public class MethodParameterSpy {
     }
 
     public static void main(String... args) {
+	    Method[] methods = Boundary.class.getMethods();
+	    for (Method method : methods) {
+		    System.out.print(method.getName() + "(");
+		    Parameter[] parameters = method.getParameters();
+		    for (Parameter parameter : parameters) {
+			    System.out.print(parameter.getType().getName() + " " + parameter.getName() + " ");
+		    }
+		    System.out.println(")");
+	    }
 
-//        try {
-//            Class<?> c = Class.forName(args[0]);
-            Class<?> c = Person.class;
-            printClassConstructors(c);
-            printClassMethods(c);
-//        } catch (ClassNotFoundException x) {
-//            x.printStackTrace();
-//        }
+//            Class<?> c = Person.class;
+//            printClassConstructors(c);
+//            printClassMethods(c);
     }
+
+
+	public class Boundary {
+
+		public void hello(String name, int age) {
+
+		}
+	}
 }
