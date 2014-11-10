@@ -1,9 +1,8 @@
 package edu.tryouts.java8;
 
-import org.apache.commons.lang3.StringUtils;
-
 import java.time.LocalDate;
-import java.time.Period;
+
+import org.apache.commons.lang3.StringUtils;
 
 /**
  * Class Person.
@@ -21,6 +20,16 @@ public class Person implements Named {
     private LocalDate birthday;
     private Sex gender;
     private String emailAddress;
+    private int age;
+    private String nationality;
+
+    public Person() {
+    }
+
+    public Person(final String nameValue, final int ageValue) {
+        name = nameValue;
+        age = ageValue;
+    }
 
     public String getName() {
         return name;
@@ -38,10 +47,6 @@ public class Person implements Named {
     public Person born(LocalDate birthday) {
         this.birthday = birthday;
         return this;
-    }
-
-    public Period getAge() {
-        return Period.between(this.getBirthday(), LocalDate.now());
     }
 
     public Sex getGender() {
@@ -68,6 +73,22 @@ public class Person implements Named {
 
     public void setEmailAddress(String emailAddress) {
         this.emailAddress = emailAddress;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public String getNationality() {
+        return nationality;
+    }
+
+    public void setNationality(String nationality) {
+        this.nationality = nationality;
     }
 
     public void printPerson() {
