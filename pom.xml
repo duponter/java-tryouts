@@ -68,6 +68,11 @@
             <artifactId>quasar-actors</artifactId>
             <version>0.6.2</version>
         </dependency>
+        <dependency>
+            <groupId>io.reactivex</groupId>
+            <artifactId>rxjava</artifactId>
+            <version>1.0.8</version>
+        </dependency>
 
         <dependency>
             <groupId>org.apache.commons</groupId>
