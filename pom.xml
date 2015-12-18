@@ -141,6 +141,12 @@
             <version>5.0.8</version>
             <scope>compile</scope>
         </dependency>
+        <dependency>
+            <groupId>com.github.alexmojaki</groupId>
+            <artifactId>boxes</artifactId>
+            <version>0.1</version>
+            <scope>compile</scope>
+        </dependency>
 
         <dependency>
             <groupId>junit</groupId>
