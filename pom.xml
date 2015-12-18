@@ -129,6 +129,18 @@
             <version>0.4.0</version>
             <scope>compile</scope>
         </dependency>
+        <dependency>
+            <groupId>org.rapidoid</groupId>
+            <artifactId>rapidoid-web</artifactId>
+            <version>5.0.8</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.rapidoid</groupId>
+            <artifactId>rapidoid-fluent</artifactId>
+            <version>5.0.8</version>
+            <scope>compile</scope>
+        </dependency>
 
         <dependency>
             <groupId>junit</groupId>
