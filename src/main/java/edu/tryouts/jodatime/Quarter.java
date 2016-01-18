@@ -1,7 +1,8 @@
 package edu.tryouts.jodatime;
 
-import org.joda.time.LocalDate;
-import org.joda.time.MonthDay;
+import java.time.LocalDate;
+import java.time.MonthDay;
+import java.time.format.DateTimeFormatter;
 
 /**
  * Class Quarter.
@@ -12,8 +13,13 @@ import org.joda.time.MonthDay;
 public enum Quarter {
 	Q1, Q2, Q3, Q4;
 
-	private MonthDay start = new MonthDay(this.ordinal() * 3 + 1, 1);
-	private MonthDay end = this.start.plusMonths(2).withDayOfMonth(this.start.plusMonths(2).dayOfMonth().getMaximumValue());
+	private MonthDay start = MonthDay.of(this.ordinal() * 3 + 1, 1);
+	private MonthDay end;
+
+	Quarter() {
+		MonthDay temp = this.start.with(this.start.getMonth().plus(2));
+		this.end = temp.withDayOfMonth(temp.getMonth().maxLength());
+	}
 
 	public Quarter previous() {
 		return get(this.ordinal() - 1);
@@ -28,7 +34,7 @@ public enum Quarter {
 	}
 
 	public static Quarter getFor(LocalDate date) {
-		return Quarter.get(date.getMonthOfYear() / 4);
+		return Quarter.get(date.getMonthValue() / 4);
 	}
 
 	public static void main(String[] args) {
@@ -36,10 +42,11 @@ public enum Quarter {
 			System.out.println("quarter = " + quarter);
 		}
 
-		System.out.println("Quarter.getFor(LocalDate.now()) = " + Quarter.getFor(LocalDate.now()));
-		System.out.println("Quarter.getFor(Aug 25) = " + Quarter.getFor(new LocalDate(1977, 8, 25)));
-		System.out.println("Quarter.getFor(Mar 31) = " + Quarter.getFor(new LocalDate(1977, 3, 31)));
-		System.out.println("Quarter.getFor(Apr 1) = " + Quarter.getFor(new LocalDate(1977, 4, 1)));
+		LocalDate now = LocalDate.now();
+		System.out.printf("Quarter.getFor(%s) = %s%n", now.format(DateTimeFormatter.ofPattern("MMM d")), Quarter.getFor(now));
+		System.out.printf("Quarter.getFor(Aug 25) = %s%n", Quarter.getFor(LocalDate.of(1977, 8, 25)));
+		System.out.printf("Quarter.getFor(Mar 31) = %s%n", Quarter.getFor(LocalDate.of(1977, 3, 31)));
+		System.out.printf("Quarter.getFor(Apr 1) = %s%n", Quarter.getFor(LocalDate.of(1977, 4, 1)));
 	}
 
 	@Override
