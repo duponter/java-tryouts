@@ -1,6 +1,7 @@
 package edu.tryouts.java8;
 
 import java.time.LocalDate;
+import java.time.Month;
 
 import org.apache.commons.lang3.StringUtils;
 
@@ -35,8 +36,12 @@ public class Person implements Named {
         return name;
     }
 
-    public Person named(String name) {
+    public void setName(String name) {
         this.name = name;
+    }
+
+    public Person named(String name) {
+        this.setName(name);
         return this;
     }
 
@@ -94,4 +99,25 @@ public class Person implements Named {
     public void printPerson() {
         System.out.println(String.format("%s (%s - Aged: %s)", StringUtils.defaultString(this.name, "???"), this.gender, this.getAge()));
     }
+
+	/**
+	 * Command line application execution.
+	 *
+	 * @param args Array of Strings referencing the command line arguments.
+	 */
+	public static void main(String[] args) {
+		Builder.of(Person.class)
+				.with(Person::setAge, 5)
+				.with(Person::setName, "Lucas")
+				.with(Person::male)
+				.build(Person::new)
+				.printPerson();
+
+		Builder.of(Person.class)
+				.with(Person::female)
+				.with(p -> p.named("Clara"))
+				.with(p -> p.born(LocalDate.of(2014, Month.FEBRUARY, 13)))
+				.build(Person::new)
+				.printPerson();
+	}
 }
