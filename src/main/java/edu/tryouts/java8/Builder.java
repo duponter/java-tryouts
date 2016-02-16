@@ -5,26 +5,21 @@ import java.util.function.Consumer;
 import java.util.function.Supplier;
 
 public interface Builder<T> {
-	void accept(T instance);
+	T build();
 
-	static <T> Builder<T> of(Class<T> type) {
-		return instance -> {};
+	static <T> Builder<T> of(Supplier<? extends T> supplier) {
+		return supplier::get;
 	}
 
 	default Builder<T> with(Consumer<T> modifier) {
-		return instance -> {
-			this.accept(instance);
+		return () -> {
+			T instance = this.build();
 			modifier.accept(instance);
+			return instance;
 		};
 	}
 
 	default <U> Builder<T> with(BiConsumer<T, U> modifier, U value) {
 		return this.with(instance -> modifier.accept(instance, value));
-	}
-
-	default T build(Supplier<? extends T> supplier) {
-		T instance = supplier.get();
-		this.accept(instance);
-		return instance;
 	}
 }

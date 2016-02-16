@@ -97,7 +97,7 @@ public class Person implements Named {
     }
 
     public void printPerson() {
-        System.out.println(String.format("%s (%s - Aged: %s)", StringUtils.defaultString(this.name, "???"), this.gender, this.getAge()));
+        System.out.println(String.format("%s (%s - %s - Aged: %s)", StringUtils.defaultString(this.name, "???"), this.gender, this.getBirthday(), this.getAge()));
     }
 
 	/**
@@ -106,18 +106,18 @@ public class Person implements Named {
 	 * @param args Array of Strings referencing the command line arguments.
 	 */
 	public static void main(String[] args) {
-		Builder.of(Person.class)
+		Builder.of(Person::new)
 				.with(Person::setAge, 5)
 				.with(Person::setName, "Lucas")
 				.with(Person::male)
-				.build(Person::new)
+				.build()
 				.printPerson();
 
-		Builder.of(Person.class)
+		Builder.of(Person::new)
 				.with(Person::female)
 				.with(p -> p.named("Clara"))
 				.with(p -> p.born(LocalDate.of(2014, Month.FEBRUARY, 13)))
-				.build(Person::new)
+				.build()
 				.printPerson();
 	}
 }
