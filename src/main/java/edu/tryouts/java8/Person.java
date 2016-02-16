@@ -108,7 +108,7 @@ public class Person implements Named {
 		 * @param args Array of Strings referencing the command line arguments.
 		 */
 		public static void main(String[] args) {
-			Builder.of(AnotherPerson::new)
+			Builder.of(Person::new)
 					.with(Person::setAge, 5)
 					.with(Person::setName, "Lucas")
 					.with(Person::male)
@@ -124,16 +124,4 @@ public class Person implements Named {
 					.build()
 					.printPerson();
 		}
-
-
-private static class AnotherPerson extends Person {
-	private String another;
-
-	public AnotherPerson() {
-	}
-
-	public void setAnother(String another) {
-		another = another;
-	}
-}
 }
