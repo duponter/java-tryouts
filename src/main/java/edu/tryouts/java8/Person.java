@@ -2,6 +2,7 @@ package edu.tryouts.java8;
 
 import java.time.LocalDate;
 import java.time.Month;
+import java.util.function.Consumer;
 
 import org.apache.commons.lang3.StringUtils;
 
@@ -100,24 +101,39 @@ public class Person implements Named {
         System.out.println(String.format("%s (%s - %s - Aged: %s)", StringUtils.defaultString(this.name, "???"), this.gender, this.getBirthday(), this.getAge()));
     }
 
-	/**
-	 * Command line application execution.
-	 *
-	 * @param args Array of Strings referencing the command line arguments.
-	 */
-	public static void main(String[] args) {
-		Builder.of(Person::new)
-				.with(Person::setAge, 5)
-				.with(Person::setName, "Lucas")
-				.with(Person::male)
-				.build()
-				.printPerson();
 
-		Builder.of(Person::new)
-				.with(Person::female)
-				.with(p -> p.named("Clara"))
-				.with(p -> p.born(LocalDate.of(2014, Month.FEBRUARY, 13)))
-				.build()
-				.printPerson();
+		/**
+		 * Command line application execution.
+		 *
+		 * @param args Array of Strings referencing the command line arguments.
+		 */
+		public static void main(String[] args) {
+			Builder.of(AnotherPerson::new)
+					.with(Person::setAge, 5)
+					.with(Person::setName, "Lucas")
+					.with(Person::male)
+					.build()
+					.printPerson();
+
+			Consumer<Object> objectConsumer = obj -> {};
+			Builder.of(Person::new)
+					.with(Person::female)
+					.with(p -> p.named("Clara"))
+					.with(p -> p.born(LocalDate.of(2014, Month.FEBRUARY, 13)))
+					.with(objectConsumer)
+					.build()
+					.printPerson();
+		}
+
+
+private static class AnotherPerson extends Person {
+	private String another;
+
+	public AnotherPerson() {
 	}
+
+	public void setAnother(String another) {
+		another = another;
+	}
+}
 }

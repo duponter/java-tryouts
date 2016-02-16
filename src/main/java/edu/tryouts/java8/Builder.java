@@ -7,11 +7,11 @@ import java.util.function.Supplier;
 public interface Builder<T> {
 	T build();
 
-	static <T> Builder<T> of(Supplier<? extends T> supplier) {
+	static <T> Builder<T> of(Supplier<T> supplier) {
 		return supplier::get;
 	}
 
-	default Builder<T> with(Consumer<T> modifier) {
+	default Builder<T> with(Consumer<? super T> modifier) {
 		return () -> {
 			T instance = this.build();
 			modifier.accept(instance);
@@ -19,7 +19,7 @@ public interface Builder<T> {
 		};
 	}
 
-	default <U> Builder<T> with(BiConsumer<T, U> modifier, U value) {
+	default <U> Builder<T> with(BiConsumer<? super T, U> modifier, U value) {
 		return this.with(instance -> modifier.accept(instance, value));
 	}
 }
