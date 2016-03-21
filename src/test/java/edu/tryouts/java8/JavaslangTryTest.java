@@ -1,15 +1,14 @@
 package edu.tryouts.java8;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import java.io.InputStream;
 import java.net.URL;
 
-import javaslang.control.Either;
-import javaslang.control.Left;
-import javaslang.control.Right;
-import javaslang.control.Try;
 import org.junit.Test;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import javaslang.control.Either;
+import javaslang.control.Try;
 
 /**
  * Class JavaslangTryTest.
@@ -30,11 +29,11 @@ public class JavaslangTryTest {
 	}
 
 	private Either<Integer, String> compute() {
-		return new Left<>(1);
+		return Either.left(1);
 	}
 
 	private Either<Integer, String> compute2() {
-		return new Right<>("error2");
+		return Either.right("error2");
 	}
 
 	;
