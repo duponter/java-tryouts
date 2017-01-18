@@ -12,6 +12,7 @@
         <java.language.version>1.8</java.language.version>
         <maven.build.timestamp.format>dd/MM/yyyy HH:mm</maven.build.timestamp.format>
         <char.encoding>UTF-8</char.encoding>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
     <build>
@@ -60,7 +61,12 @@
         <dependency>
             <groupId>io.javaslang</groupId>
             <artifactId>javaslang</artifactId>
-            <version>2.0.1</version>
+            <version>2.0.5</version>
+        </dependency>
+        <dependency>
+            <groupId>io.javaslang</groupId>
+            <artifactId>javaslang-test</artifactId>
+            <version>2.0.5</version>
         </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
@@ -228,8 +234,6 @@
         <!--[INFO]   com.pholser:junit-quickcheck-generators .......... 0.6.1 -> 0.7-beta-2-->
         <!--[INFO]   com.squareup:javapoet ................................. 1.0.0 -> 1.8.0-->
         <!--[INFO]   dom4j:dom4j ................................. 1.6.1 -> 20040902.021138-->
-        <!--[INFO]   io.javaslang:javaslang ................................ 2.0.1 -> 2.0.5-->
-        <!--[INFO]   junit:junit ............................................. 4.11 -> 4.12-->
         <!--[INFO]   net.bytebuddy:byte-buddy .............................. 1.0.0 -> 1.5.6-->
         <!--[INFO]   net.time4j:time4j-core ................................... 1.1 -> 4.20-->
         <!--[INFO]   net.time4j:time4j-olson .................................. 1.1 -> 4.20-->
