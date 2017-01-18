@@ -1,0 +1,2 @@
+[1024, {"product_id": 100, "start": "beijing"}]
+["1025", {"product_id": 101, "start": "shanghai"}]
