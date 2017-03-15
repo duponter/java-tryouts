@@ -27,8 +27,8 @@ public class Example {
                 .build();
 
         try {
-            CallResults<String> results = new CallExecutor(config).execute(callable);
-            String result = results.getResult();
+            CallResults<Object> results = new CallExecutor(config).execute(callable);
+            Object result = results.getResult();
             System.out.println("result is: " + result);
         } catch (RetriesExhaustedException ree) {
             System.err.println("retries exhausted..");
